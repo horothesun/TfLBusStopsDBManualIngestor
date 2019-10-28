@@ -1,9 +1,9 @@
-exports.fetchBusStops = (readStream, csvParser) =>
+exports.fetchBusStops = (readStream, csvParser) => () =>
     new Promise((resolve, reject) =>
-        fetchBusStopsCallbacks(readStream, csvParser, resolve, reject)
+        fetchBusStopsCallbacks(readStream, csvParser)(resolve, reject)
     )
 
-function fetchBusStopsCallbacks(readStream, csvParser, onSuccess, onError) {
+const fetchBusStopsCallbacks = (readStream, csvParser) => (onSuccess, onError) => {
     let busStops = []
     readStream
         .on("error", () => onError("Error loading CSV file"))
