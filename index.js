@@ -1,13 +1,6 @@
 const dotenv = require('dotenv')
 const { ingest } = require('./ingestion')
 
-/* .env file
-DB_USERNAME=____
-DB_PASSWORD=____
-DB_SERVER_NAME=____
-DB_PORT=____
-*/
-
 dotenv.config()
 ingest({
     username: process.env.DB_USERNAME,

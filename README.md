@@ -6,10 +6,10 @@ TfL bus stops PostgreSQL DB ingestor.
 
 Create a `.env` file like the following:
 ```
-DB_USERNAME=_______
-DB_PASSWORD=_______
-DB_SERVER_NAME=____
-DB_PORT=___________
+DB_USERNAME=__________
+DB_PASSWORD=__________
+DB_SERVER_NAME=_______
+DB_PORT=______________
 ```
 
 ### Run

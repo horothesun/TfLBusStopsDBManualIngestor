@@ -4,7 +4,8 @@
   "description": "PostgreSQL DB ingestor",
   "main": "index.js",
   "scripts": {
-    "test": "jest --watchAll"
+    "test": "jest",
+    "watch": "jest --watch *.js"
   },
   "author": "Nicola Di Pol",
   "license": "MIT",

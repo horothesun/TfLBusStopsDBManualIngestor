@@ -5,6 +5,7 @@ exports.deleteBusStopsTable = (tableName, client) =>
     client.query(`DELETE FROM ${tableName};`)
 
 exports.insertBusStops = (busStops, tableName, client) => {
+    const valuesToInsert = busStops.map(sqlValueToInsert).join(",\n")
     const insertString = `\
         INSERT INTO ${tableName} (\
             stop_code_lbsl,\
@@ -15,33 +16,28 @@ exports.insertBusStops = (busStops, tableName, client) => {
             location_northing,\
             heading, stop_area,\
             virtual_bus_stop\
-        ) VALUES ${sqlValuesToInsert(busStops)};`
+        ) VALUES ${valuesToInsert};`
     return client.query(insertString)
 }
 
-const sqlValuesToInsert = (busStops) =>
-    busStops
-        .map(bs =>
-            `(\
-                '${cleanedStopCodeLBSL(bs)}',\
-                ${cleanedNumber(bs.Bus_Stop_Code)},\
-                '${bs.Naptan_Atco}',\
-                '${duplicatedSingleQuote(bs.Stop_Name)}',\
-                ${bs.Location_Easting},\
-                ${bs.Location_Northing},\
-                ${cleanedNumber(bs.Heading)},\
-                '${bs.Stop_Area}',\
-                ${sqlBooleanValue(bs.Virtual_Bus_Stop)}\
-            )`
-        )
-        .join(",\n")
+const sqlValueToInsert = (busStop) =>
+    `(\
+        '${cleanedStopCodeLBSL(busStop)}',\
+        ${cleanedNumber(busStop.Bus_Stop_Code)},\
+        '${busStop.Naptan_Atco}',\
+        '${duplicatedSingleQuote(busStop.Stop_Name)}',\
+        ${busStop.Location_Easting},\
+        ${busStop.Location_Northing},\
+        ${cleanedNumber(busStop.Heading)},\
+        '${busStop.Stop_Area}',\
+        ${booleanValue(busStop.Virtual_Bus_Stop)}\
+    )`
 
 function cleanedStopCodeLBSL(busStop) {
     const bomChar = "\uFEFF"
     const stopCodeLBSLString = "Stop_Code_LBSL"
-    return busStop[stopCodeLBSLString] === undefined
-        ? busStop[`${bomChar}${stopCodeLBSLString}`]
-        : busStop[stopCodeLBSLString]
+    return busStop[stopCodeLBSLString]
+        || busStop[`${bomChar}${stopCodeLBSLString}`]
 }
 
 const duplicatedSingleQuote = (string) => string.replace(/'/g, "''")
@@ -51,4 +47,4 @@ function cleanedNumber(string) {
     return isNaN(parsed) ? "-1" : `${parsed}`
 }
 
-const sqlBooleanValue = (string) => string === "1" ? "true" : "false"
+const booleanValue = (string) => string === "1" ? "true" : "false"
