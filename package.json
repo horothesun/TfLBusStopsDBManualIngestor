@@ -10,12 +10,12 @@
   "author": "Nicola Di Pol",
   "license": "MIT",
   "dependencies": {
-    "csv-parser": "^2.3.1",
+    "csv-parser": "^2.3.2",
     "dotenv": "^8.2.0",
     "fs": "0.0.1-security",
-    "pg": "^7.12.1"
+    "pg": "^8.0.0"
   },
   "devDependencies": {
-    "jest": "^24.9.0"
+    "jest": "^25.2.7"
   }
 }
