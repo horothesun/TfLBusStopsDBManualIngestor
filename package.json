@@ -4,6 +4,7 @@
   "description": "PostgreSQL DB ingestor",
   "main": "index.js",
   "scripts": {
+    "start": "node index.js",
     "test": "jest",
     "watch": "jest --watchAll"
   },
@@ -12,7 +13,6 @@
   "dependencies": {
     "csv-parser": "^3.0.0",
     "dotenv": "^8.2.0",
-    "fs": "0.0.1-security",
     "pg": "^8.5.1"
   },
   "devDependencies": {
