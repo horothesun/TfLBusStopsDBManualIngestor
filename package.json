@@ -1,6 +1,6 @@
 {
   "name": "postgresql-ingestor",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "PostgreSQL DB ingestor",
   "main": "index.js",
   "scripts": {
@@ -10,12 +10,12 @@
   "author": "Nicola Di Pol",
   "license": "MIT",
   "dependencies": {
-    "csv-parser": "^2.3.2",
+    "csv-parser": "^3.0.0",
     "dotenv": "^8.2.0",
     "fs": "0.0.1-security",
-    "pg": "^8.0.0"
+    "pg": "^8.5.1"
   },
   "devDependencies": {
-    "jest": "^25.2.7"
+    "jest": "^26.6.3"
   }
 }
