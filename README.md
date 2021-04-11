@@ -1,5 +1,7 @@
 # TfL bus stops DB manual ingestor
 
+[![CI](https://github.com/horothesun/TfLBusStopsDBManualIngestor/actions/workflows/ci-linux.yml/badge.svg)](https://github.com/horothesun/TfLBusStopsDBManualIngestor/actions/workflows/ci-linux.yml)
+
 TfL bus stops PostgreSQL DB ingestor.
 
 ## Pre-requisites
